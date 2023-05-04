@@ -3,15 +3,27 @@ import './App.css'
 import Candy from './Components/Candy'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [name, setName] = useState("")
+  const [aberto, setAberto] = useState(false);
+
+  function abrirDialogo() {
+    setAberto(true);
+  }
+
+  function fechaDialogo(){
+    setAberto(false)
+  }
+  
 
   return (
     <>
       <h1 className='title'>🍭GetCandy🍬</h1>
       <div className='apresentation'>
-        <h3>Olá senhor (a):</h3>
+        <h3>Olá senhor (a):{name}</h3>
         <h3>Seja bem vindo!</h3>
       </div>
+
+      <div><button onClick={() => abrirDialogo()}>Novo Pedido</button></div>
 
       <div className='tot'>
         <h2>Total a pagar: R$ 0,00</h2>
@@ -37,6 +49,12 @@ function App() {
         price='4,50'
         />
       </div>
+
+      <dialog open={aberto} onClose={()=>fechaDialogo()}>
+          <h2>Título do diálogo</h2>
+          <p>blablabla</p>
+          <button onClick={()=>fechaDialogo()}>Fechar</button>
+        </dialog>
 
       <footer><span>Orgulhosamente Produzido por Gabriel Moreira</span></footer>
     </>
