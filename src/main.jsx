@@ -3,8 +3,13 @@ import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
 
+
+import {VarProvider} from './Context/VarContext';
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <App />
+    <VarProvider>
+      <App />
+    </VarProvider>
   </React.StrictMode>,
 )

@@ -1,10 +1,11 @@
 import { useState } from 'react'
 import './App.css'
 import Candy from './Components/Candy'
+import { useContext } from 'react';
+import { VarContext } from './Context/VarContext';
 
 function App() {
-  const [name, setName] = useState("")
-  const [aberto, setAberto] = useState(false);
+  const {name, setName, aberto, setAberto} = useContext(VarContext)
 
   function abrirDialogo() {
     setAberto(true);
