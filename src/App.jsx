@@ -1,23 +1,16 @@
-import { useState } from 'react'
+/* import { useState } from 'react' */
 import './App.css'
 import Candy from './Components/Candy'
 import { useContext } from 'react';
 import { VarContext } from './Context/VarContext';
+import Dialog from './Components/Dialog';
 
 function App() {
-  const {name, setName, aberto, setAberto} = useContext(VarContext)
+  const {name, setAberto} = useContext(VarContext)
 
+  
   function abrirDialogo() {
     setAberto(true);
-  }
-
-  function fechaDialogo(){
-    setAberto(false)
-  }
-  
-  function changeName(e){
-    let n = e.target.value;
-    setName(n)
   }
 
   return (
@@ -55,17 +48,7 @@ function App() {
         />
       </div>
 
-      <dialog open={aberto} onClose={()=>fechaDialogo()}>
-
-      <div className="overlay"></div>
-      <div className="dialog-box">
-          <h2>Título do diálogo</h2>
-          <label htmlFor="name">Digite seu nome, por favor:</label>
-          <input type="text" name="name" id="name" onChange={changeName}/>
-          <button onClick={()=>fechaDialogo()}>Fechar</button>
-      </div>
-          
-        </dialog>
+      <Dialog/>
 
       <footer><span>Orgulhosamente Produzido por Gabriel Moreira</span></footer>
     </>
