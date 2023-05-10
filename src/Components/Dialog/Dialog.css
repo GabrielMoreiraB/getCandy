@@ -1,0 +1,27 @@
+.dialog-box label{
+    display: block;
+    margin-bottom: 8px;
+    font-size: 18px;
+    text-align: start;
+    font-weight: bold;
+}
+
+.dialog-box input{
+    background-color: #ffffff;
+    box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.31);
+    width: 100%;
+    border: none;
+    font-size: 24px;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+
+.dialog-box p {
+    font-weight: 500;
+}
+
+.dialog-box button{
+    border: 1px solid violet;
+    margin: 0 .5em;
+}
