@@ -4,12 +4,24 @@ import './Dialog.css'
 
 const Otimizado = () => {
 
-    const {setTotPag, totPag} = useContext(VarContext)
+    const {setTotPag,
+          totPag,
+          setDoce1, 
+          setDoce2, 
+          setDoce3, 
+          doce1, 
+          doce2, 
+          doce3,
+        } = useContext(VarContext)
 
     function changeOt(e){
         let n = e.target.value;
         setTotPag(n)
-      }
+    }
+
+    
+
+
     return ( 
         <>
             <h3>Nessa modalidade, vamos gerar para você o maior numero de doces de acordo com o dinheiro que quer gastar 😁</h3>
