@@ -1,37 +1,85 @@
 import { useContext } from 'react';
 import { VarContext } from '../../Context/VarContext'
 import './Dialog.css'
+import EscName from './escName';
+import EscCandy from './EscCandy';
+import Otimizado from './Otimizado';
 
 const Dialog = () => {
-    const {setName, aberto, setAberto} = useContext(VarContext)
+    const {aberto, 
+          setAberto, 
+          setCurrentPage, 
+          currentPage, 
+          setDoce1, 
+          setDoce2, 
+          setDoce3, 
+          doce1, 
+          doce2, 
+          doce3,
+          btnDesabled} = useContext(VarContext)
 
-  
     function fechaDialogo(){
       setAberto(false)
-    }
-    
-    function changeName(e){
-      let n = e.target.value;
-      setName(n)
+      setCurrentPage(1);
     }
 
-    const dialogo = document.querySelector('.dialog-box');
-    
+    function handleNextPage() {
+      setCurrentPage(currentPage + 1);
+    }
+    function handlePrevPage() {
+      setCurrentPage(currentPage - 1);
+    }
+    function handleOtPage(){
+      setCurrentPage('ot')
+    }
 
+    let page;
+
+    switch (currentPage){
+      case 1:
+        page = <EscName/>;
+        break;
+      case 2:
+        page = <EscCandy
+                name ='Trufa Doce Desejo'
+                valor='2,00'
+                change={setDoce1}
+                value = {doce1}
+                />
+        break;
+      case 3:
+        page = <EscCandy
+                name ='Doce de Leite dos Deuses'
+                valor='3,00'
+                change={setDoce2}
+                value = {doce2}
+                />
+        break;
+      case 4:
+        page = <EscCandy
+                name ='Paletta Dolce Gusto'
+                valor='4,50'
+                change={setDoce3}
+                value = {doce3}
+                />
+        break;
+      case 'ot':
+        page = <Otimizado/>
+        break;
+      default:
+        page = <EscName/>;
+    }
 
     return ( 
         <dialog open={aberto} onClose={()=>fechaDialogo()}>
-
-      <div className="overlay"></div>
-      <div className="dialog-box">
-          <h2>Vamos iniciar seu pedido!</h2>
-          <label htmlFor="name">Digite seu nome, por favor:</label>
-          <input type="text" name="name" id="name" onChange={changeName}/>
-          <p>como gostaria de fazer seu pedido? Caso queira selecionar os doces, aperte em "Escolher"; caso queira uma seleção otimizada para a maior quantidade de doces, aperte em "Otimizar"!</p>
-          <button >Otimizar</button>
-          <button >Escolher</button>
-          {/* <button onClick={()=>fechaDialogo()}>Fechar</button> */}
-      </div>
+        <div className="overlay"></div>
+        <div className="dialog-box">
+          <>{page}</>
+        {(currentPage < 2) && <button onClick={()=>handleOtPage()} disabled={btnDesabled}>Otimizar</button>}
+        {(currentPage != 'ot' && currentPage<4) && <button onClick={()=>handleNextPage()} disabled={btnDesabled}>{(currentPage <2) ? "Escolher":"Próximo"} </button>}
+        {(currentPage>1 && currentPage<4) && <button onClick={()=>handlePrevPage()} disabled={btnDesabled}>voltar</button>}
+        <button onClick={()=>fechaDialogo()}>Fechar</button>
+        </div>
           
         </dialog>
     )
