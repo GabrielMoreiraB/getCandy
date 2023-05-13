@@ -29,7 +29,7 @@ function App() {
       <div><button onClick={() => abrirDialogo()}>Novo Pedido</button></div>
 
       <div className='tot'>
-        <h2>Total a pagar: R$ {totPag.toFixed(2)}</h2>
+        <h2>Total a pagar: R$ {(totPag.toFixed(2))}</h2>
       </div>
 
       <div className='container'>

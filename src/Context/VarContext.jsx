@@ -11,9 +11,7 @@ export const VarProvider = ({children}) => {
     const [doce3, setDoce3] = useState(0);
     const [totPag, setTotPag] = useState(0);
     const [currentPage, setCurrentPage] = useState(1);
-    const [btnDesabled, setBtnDesabled] = useState(true)
-
-
+    const [btnDesabled, setBtnDesabled] = useState(true);
 
 
     return <VarContext.Provider value={{
@@ -32,6 +30,6 @@ export const VarProvider = ({children}) => {
         totPag, 
         setTotPag,
         btnDesabled, 
-        setBtnDesabled
+        setBtnDesabled,
     }}>{children}</VarContext.Provider>;
 }

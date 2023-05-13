@@ -4,6 +4,7 @@ import './Dialog.css'
 import EscName from './escName';
 import EscCandy from './EscCandy';
 import Otimizado from './Otimizado';
+import Finish from './Finish';
 
 const Dialog = () => {
     const {aberto, 
@@ -65,6 +66,9 @@ const Dialog = () => {
         break;
       case 'ot':
         page = <Otimizado/>
+        break;
+      case 'fin':
+        page = <Finish/>
         break;
       default:
         page = <EscName/>;
